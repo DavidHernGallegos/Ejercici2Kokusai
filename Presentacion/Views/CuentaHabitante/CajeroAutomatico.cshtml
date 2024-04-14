@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "CajeroAutomatico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CajeroAutomatico</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+           
+            @using (Html.BeginForm("ConsulatarSaldo", "CuentaHabitante", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <button type="submit" class="btn btn-warning">Consultar Saldo</button>
+            
+            }
+        </div>
+        <div class="col-2">
+            @using (Html.BeginForm("RetirarEfectivo", "CuentaHabitante", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <button type="submit" class="btn btn-success">Retirar Dinero</button>
+            }
+        </div>
+    </div>
+
+   
+    
+   
+    
+</div>

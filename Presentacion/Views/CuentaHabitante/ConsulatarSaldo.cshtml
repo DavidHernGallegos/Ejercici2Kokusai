@@ -1,0 +1,59 @@
+﻿@model Modelo.CuentaHabitante
+@{
+    ViewData["Title"] = "ConsulatarSaldo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ConsulatarSaldo</h1>
+
+<div class="container-fluid">
+    @if(Model == null)
+    {
+        @using (Html.BeginForm("ConsulatarSaldo", "CuentaHabitante", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-2">
+                <div class="form-group">
+                    <label for="id">ID del cuentahabiente:</label>
+                        <input type="text" id="idCuentaHabitante" name="idCuenta" class="form-control" />
+                </div>
+            </div>
+                
+            </div>
+            <div class="row pt-2">
+                  <div class="col-2">
+                    <button type="submit" class="btn btn-primary">Realizar Consulta</button>
+                  </div>
+            </div>
+
+        }
+
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-6"> 
+                <h2>Información de Cuenta</h2>
+
+                <div>
+                    <label>ID del Cuentahabiente:</label>
+                    <span>@Model.Id</span>
+                </div>
+
+                <div>
+                    <label>Nombre del Cuentahabiente:</label>
+                    <span>@Model.NombreCompleto</span>
+                </div>
+
+                <div>
+                    <label>Saldo:</label>
+                    <span>@Model.Saldo</span>
+                </div>
+            </div>
+            <div class="pt-2">
+                @Html.ActionLink("Regresar", "CajeroAutomatico", "CuentaHabitante", htmlAttributes: new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    }
+
+</div>

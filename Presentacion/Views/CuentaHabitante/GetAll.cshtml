@@ -1,0 +1,41 @@
+﻿@model Modelo.CuentaHabitante
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Tabla CuentaHabitantes</h1>
+
+<div class="row">
+    <div class="col-1">
+        <a href="@Url.Action("Form", "CuentaHabitante")" class="btn btn-success">Agregar</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Actualizar</th>
+            <th>IdCuentaHabitante</th>
+            <th>Nombre</th>
+            <th>Sueldo</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Modelo.CuentaHabitante cuentaHabitante in Model.CuentaHabitantes)
+        {
+
+
+            <tr>
+                <td><a href="@Url.Action("Form","CuentaHabitante", new{IdCuentaHabitante = cuentaHabitante.Id})" class="btn btn-warning">Actualizar</a></td>
+                <td>@cuentaHabitante.Id</td>
+                <td>@cuentaHabitante.NombreCompleto</td>
+                <td>@cuentaHabitante.Saldo</td>
+                <td><a href="@Url.Action("Delete","CuentaHabitante", new{IdCuentaHabitante = cuentaHabitante.Id})" class="btn btn-danger">Delete</a></td>
+            </tr>
+
+
+        }
+    </tbody>
+
+</table>

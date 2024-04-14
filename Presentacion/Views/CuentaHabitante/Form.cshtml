@@ -1,0 +1,47 @@
+﻿
+@model Modelo.CuentaHabitante
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Formulario CuentaHabitante</h1>
+
+
+<div class="container-fluid">
+    @using (Html.BeginForm("Form", "CuentaHabitante", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.HiddenFor(Model => Model.Id)
+        <div class="row">
+            <div class="col-3">
+                @Html.LabelFor(Model => Model.NombreCompleto)
+                @Html.TextBoxFor(Model => Model.NombreCompleto, new { @class = "form-control"})
+
+            </div>
+            <div class="col-3">
+                @Html.LabelFor(Model => Model.Saldo)
+                @Html.TextBoxFor(Model => Model.Saldo, new { @class = "form-control"})
+
+            </div>
+
+
+        </div>
+        <div class="row pt-3">
+            <div class="col">
+                @if (Model.Id > 0)
+                {
+                    <input type="submit" value="Actualizar" class="btn btn-info">
+                }
+                else
+                {
+                    <input type="submit" value="Guardar" class="btn btn-info">
+                }
+
+            </div>
+        </div>
+
+    }
+
+
+</div>

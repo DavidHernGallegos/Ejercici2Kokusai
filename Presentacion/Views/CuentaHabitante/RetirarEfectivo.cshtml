@@ -1,0 +1,38 @@
+﻿@model Modelo.Moneda
+@{
+    ViewData["Title"] = "RetirarEfectivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>RetirarEfectivo</h1>
+
+
+<div class="container-fluid">
+    @using (Html.BeginForm("RetirarEfectivo", "CuentaHabitante", FormMethod.Get, new { enctype = "multipart/form-data" }))
+     {
+        <div class="form-group">
+            <label for="id">ID del cuentahabiente:</label>
+            <input type="text" id="idCuentaHabitante" name="idCuentaHabitante" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="cantidad">Cantidad a retirar:</label>
+            <input type="text" id="cantidadRetirada" name="cantidadRetirada" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Realizar retiro</button>
+    
+     }
+
+    @if(Model == null)
+    {
+        <p>Aqui se mostrara tu dinero</p>
+    }
+    else
+    {
+        <p>Retira tu efectivo</p>
+        foreach(Modelo.Moneda moneda in Model.Monedas)
+        {  
+            <p>Efectivo: @moneda.MonedaTipo , Cantidad: @moneda.Cantidad</p> 
+        }
+    }
+
+</div>
